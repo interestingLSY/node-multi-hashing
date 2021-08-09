@@ -119,6 +119,18 @@ void yespower_sugar_hash(const char* input, char* output, uint32_t len)
     yespower_tls((yespower_binary_t*)input, len, &params, (yespower_binary_t*)output);
 }
 
+void yespower_mgpc_hash(const char* input, char* output, uint32_t len)
+{
+    yespower_params_t params = {
+            .version = YESPOWER_1_0,
+            .N = 2048,
+            .r = 32,
+            .pers = "Magpies are birds of the Corvidae family.",
+            .perslen = 41
+    };
+    yespower_tls((yespower_binary_t*)input, len, &params, (yespower_binary_t*)output);
+}
+
 void yespower_ltncg_hash(const char* input, char* output)
 {
     yespower_params_t params = {
